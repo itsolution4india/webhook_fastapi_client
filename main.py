@@ -44,9 +44,9 @@ logging.basicConfig(
 dbconfig = {
     "host": "localhost",
     "port": 3306,
-    "user": "fedqrbtb_wtsdealnow",
+    "user": "prashanth@itsolution4india.com",
     "password": "Solution@97",
-    "database": "fedqrbtb_report",
+    "database": "webhook_responses",
     "auth_plugin": 'mysql_native_password'
 }
 
