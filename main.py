@@ -229,6 +229,7 @@ async def create_account_table(account_id: str, connection):
 
 async def store_webhook_data(report: Dict[str, Any], body: Dict[str, Any], account_id: str):
     """Store webhook data in the database."""
+    logging.info("store_webhook_data called")
     connection = None
     cursor = None
     
@@ -323,14 +324,6 @@ async def process_webhook(body: Dict[str, Any], account_id: str):
         # Parse webhook response
         data = parse_webhook_response(body)
         
-        # Log to file
-        # event_id = body.get('entry', [{}])[0].get('id', 'unknown')
-        # filename = os.path.join(LOGS_DIR, f'{account_id}_{event_id}.log')
-        # with open(filename, 'a+') as file:
-        #     file.write(json.dumps(data))
-        #     file.write("\n")
-        
-        # Store in database
         await store_webhook_data(data, body, account_id)
         
     except Exception as e:
