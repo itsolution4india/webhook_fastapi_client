@@ -152,7 +152,9 @@ def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
                     elif interactive_type == 'list_reply':
                         report['message_body'] = message.get('interactive', {}).get('list_reply', {}).get('title')
                     elif interactive_type == 'nfm_reply':
-                        report['message_body'] = clean_interactive_type(message.get('interactive', {}).get('nfm_reply', {}).get('response_json'))
+                        interactive_msg = message.get('interactive', {}).get('nfm_reply', {}).get('response_json')
+                        interactive_type_dict = json.loads(interactive_msg)
+                        report['message_body'] = clean_interactive_type(interactive_type_dict)
                 else:
                     report['message_body'] = ""
     
