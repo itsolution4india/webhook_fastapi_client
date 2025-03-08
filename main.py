@@ -68,6 +68,20 @@ def remove_special_chars(text: str) -> str:
         return ""
     return re.sub(r'[^\x00-\x7F]+', '', text)
 
+def clean_interactive_type(interactive_type):
+    cleaned_interactive_type = {}
+    for key, value in interactive_type.items():
+        if key == "flow_token":
+            continue
+        new_key = "_".join(key.split('_')[:-1]).replace('_', ' ')
+        
+        if isinstance(value, str) and '_' in value:
+            value = value.split('_', 1)[1]
+        
+        cleaned_interactive_type[new_key] = value
+
+    return cleaned_interactive_type
+
 def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
     """Parse webhook response into standardized format."""
     report = {}
@@ -132,7 +146,7 @@ def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
                 elif message.get('type') == 'video':
                     report['message_body'] = message.get('video', {}).get('id')
                 elif message.get('type') == 'interactive':
-                    interactive_type = message.get('interactive', {}).get('type')
+                    interactive_type = clean_interactive_type(message.get('interactive', {}).get('type'))
                     if interactive_type == 'button_reply':
                         report['message_body'] = message.get('interactive', {}).get('button_reply', {}).get('title')
                     elif interactive_type == 'list_reply':
@@ -229,7 +243,6 @@ async def create_account_table(account_id: str, connection):
 
 async def store_webhook_data(report: Dict[str, Any], body: Dict[str, Any], account_id: str):
     """Store webhook data in the database."""
-    logging.info("store_webhook_data called")
     connection = None
     cursor = None
     
