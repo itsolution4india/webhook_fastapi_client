@@ -146,7 +146,7 @@ def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
                 elif message.get('type') == 'video':
                     report['message_body'] = message.get('video', {}).get('id')
                 elif message.get('type') == 'interactive':
-                    interactive_type = clean_interactive_type(message.get('interactive', {}).get('type'))
+                    interactive_type = clean_interactive_type(json.loads(message.get('interactive', {}).get('type')))
                     if interactive_type == 'button_reply':
                         report['message_body'] = message.get('interactive', {}).get('button_reply', {}).get('title')
                     elif interactive_type == 'list_reply':
