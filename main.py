@@ -161,6 +161,7 @@ def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
                         else:
                             interactive_type_dict = interactive_msg
                         report['message_body'] = clean_interactive_type(interactive_type_dict)
+                        report['message_body'] = json.dumps(report['message_body'])
                 else:
                     report['message_body'] = ""
     
