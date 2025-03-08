@@ -1,0 +1,88 @@
+2025-03-08 16:04:28,097 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:04:28,153 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:04:28,161 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:04:28,391 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:05:09,825 - ERROR - [main.py:343] - Error in background processing: 'str' object has no attribute 'items'
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 338, in process_webhook
+    data = parse_webhook_response(body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/main.py", line 155, in parse_webhook_response
+    report['message_body'] = clean_interactive_type(message.get('interactive', {}).get('nfm_reply', {}).get('response_json'))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/main.py", line 73, in clean_interactive_type
+    for key, value in interactive_type.items():
+                      ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'items'
+2025-03-08 16:10:37,756 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:10:37,777 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:10:37,883 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:10:38,036 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:11:12,018 - ERROR - [main.py:327] - An unexpected error occurred: Python type dict cannot be converted
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 292, in store_webhook_data
+    cursor.execute(add_response, data_response)
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/cursor_cext.py", line 361, in execute
+    prepared = self._cnx.prepare_for_mysql(params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/connection_cext.py", line 830, in prepare_for_mysql
+    result = self._cmysql.convert_to_mysql(*params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Python type dict cannot be converted
+2025-03-08 16:11:12,021 - ERROR - [main.py:345] - Error in background processing: 500: An unexpected error occurred: Python type dict cannot be converted
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 292, in store_webhook_data
+    cursor.execute(add_response, data_response)
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/cursor_cext.py", line 361, in execute
+    prepared = self._cnx.prepare_for_mysql(params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/connection_cext.py", line 830, in prepare_for_mysql
+    result = self._cmysql.convert_to_mysql(*params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Python type dict cannot be converted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 342, in process_webhook
+    await store_webhook_data(data, body, account_id)
+  File "/var/www/webhook_fastapi/main.py", line 328, in store_webhook_data
+    raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
+fastapi.exceptions.HTTPException: 500: An unexpected error occurred: Python type dict cannot be converted
+2025-03-08 16:23:08,613 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:23:08,659 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:23:08,716 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:23:08,774 - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-03-08 16:23:57,312 - INFO - [main.py:157] - interactive_msg {"screen_1_Purchase_experience_0":"0_Excellent","screen_1_Delivery_and_setup_1":"2_Average","screen_1_Customer_service_2":"4_Very_Poor","screen_0_Choose_one_0":"0_Yes","screen_0_Leave_a_comment_1":"Thanks ","flow_token":"unused"}
+2025-03-08 16:23:57,312 - INFO - [main.py:158] - Type <class 'str'>
+2025-03-08 16:23:57,342 - ERROR - [main.py:330] - An unexpected error occurred: Python type dict cannot be converted
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 295, in store_webhook_data
+    cursor.execute(add_response, data_response)
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/cursor_cext.py", line 361, in execute
+    prepared = self._cnx.prepare_for_mysql(params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/connection_cext.py", line 830, in prepare_for_mysql
+    result = self._cmysql.convert_to_mysql(*params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Python type dict cannot be converted
+2025-03-08 16:23:57,345 - ERROR - [main.py:348] - Error in background processing: 500: An unexpected error occurred: Python type dict cannot be converted
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 295, in store_webhook_data
+    cursor.execute(add_response, data_response)
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/cursor_cext.py", line 361, in execute
+    prepared = self._cnx.prepare_for_mysql(params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/webhook_fastapi/webhook_env/lib/python3.12/site-packages/mysql/connector/connection_cext.py", line 830, in prepare_for_mysql
+    result = self._cmysql.convert_to_mysql(*params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Python type dict cannot be converted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/webhook_fastapi/main.py", line 345, in process_webhook
+    await store_webhook_data(data, body, account_id)
+  File "/var/www/webhook_fastapi/main.py", line 331, in store_webhook_data
+    raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
+fastapi.exceptions.HTTPException: 500: An unexpected error occurred: Python type dict cannot be converted
