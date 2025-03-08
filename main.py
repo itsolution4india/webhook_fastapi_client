@@ -156,7 +156,10 @@ def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
                         type_msg = type(interactive_msg)
                         logging.info(f"interactive_msg {interactive_msg}")
                         logging.info(f"Type {type_msg}")
-                        interactive_type_dict = json.loads(interactive_msg)
+                        if isinstance(interactive_msg, str):
+                            interactive_type_dict = json.loads(interactive_msg)
+                        else:
+                            interactive_type_dict = interactive_msg
                         report['message_body'] = clean_interactive_type(interactive_type_dict)
                 else:
                     report['message_body'] = ""
