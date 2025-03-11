@@ -5,7 +5,7 @@ import json
 from db import get_connection, create_account_table
 import mysql.connector
 from fastapi import HTTPException
-from memory_batching import send_to_dashboard
+from memory_batching import dashboard_notifier
 from utils import remove_special_chars, logging, clean_interactive_type
 
 def parse_webhook_response(response: Dict[str, Any]) -> Dict[str, Any]:
@@ -204,3 +204,7 @@ async def store_webhook_data(reports, bodies, account_id):
             cursor.close()
         if connection:
             connection.close()
+            
+async def send_to_dashboard(response: Dict[str, Any]):
+    """Queue a notification to be sent to the dashboard."""
+    await dashboard_notifier.send_notification(response)

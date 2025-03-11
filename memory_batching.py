@@ -189,7 +189,3 @@ class DashboardNotifier:
             logging.error(f"Error sending to dashboard: {e}")
             
 dashboard_notifier = DashboardNotifier(dashboard_url=DASHBOARD_URL)
-
-async def send_to_dashboard(response: Dict[str, Any]):
-    """Queue a notification to be sent to the dashboard."""
-    await dashboard_notifier.send_notification(response)
