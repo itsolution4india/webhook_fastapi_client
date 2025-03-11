@@ -4,8 +4,7 @@ import uvicorn
 from fastapi import FastAPI, Request, Response, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from memory_batching import webhook_batcher, dashboard_notifier
-from parse_and_store_webhook_data import parse_webhook_response, store_webhook_data
+from parse_and_store_webhook_data import parse_webhook_response, store_webhook_data, webhook_batcher, dashboard_notifier
 
 # Create FastAPI app
 
