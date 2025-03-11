@@ -51,7 +51,7 @@ dbconfig = {
 }
 
 # Create connection pool
-connection_pool = MySQLConnectionPool(pool_name="mypool", pool_size=10, **dbconfig)
+connection_pool = MySQLConnectionPool(pool_name="mypool", pool_size=20, **dbconfig)
 
 # Get database connection from pool
 def get_connection():
