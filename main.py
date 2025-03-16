@@ -28,7 +28,7 @@ app.add_middleware(
 # Constants
 VERIFY_TOKEN = "hello"
 LOGS_DIR = 'message_logs'
-DASHBOARD_URL = "https://wtsdealnow/user_responses/"
+DASHBOARD_URL = "https://wtsdealnow.com/user_responses/"
 
 # Set up logging
 if not os.path.exists(LOGS_DIR):
