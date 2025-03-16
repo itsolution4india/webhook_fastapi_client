@@ -2,7 +2,7 @@ import logging
 import os, re
 
 LOGS_DIR = 'message_logs'
-DASHBOARD_URL = "https://main.wtsmessage.xyz/user_responses/"
+DASHBOARD_URL = "https://wtsdealnow/user_responses/"
 
 if not os.path.exists(LOGS_DIR):
     os.makedirs(LOGS_DIR)
